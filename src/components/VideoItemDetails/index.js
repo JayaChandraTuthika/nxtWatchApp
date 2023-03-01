@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import ReactPlayer from 'react-player'
+import Loader from 'react-loader-spinner'
 import {BiLike, BiDislike} from 'react-icons/bi'
 import {MdPlaylistAdd, MdPlaylistAddCheck} from 'react-icons/md'
 import Cookies from 'js-cookie'
@@ -13,6 +14,7 @@ import {
   VideoBackgroundContainer,
   VideoContainer,
   VideoTextContainer,
+  VideoButton,
 } from './styledComponents'
 import './index.css'
 
@@ -72,11 +74,11 @@ class VideoItemDetails extends Component {
   }
 
   onLikeVideo = () => {
-    this.setState(prev => ({liked: !prev.liked}))
+    this.setState(prev => ({liked: !prev.liked, disliked: false}))
   }
 
   onDislikeVideo = () => {
-    this.setState(prev => ({disliked: !prev.disliked}))
+    this.setState(prev => ({disliked: !prev.disliked, liked: false}))
   }
 
   renderVideoDetails = () => {
@@ -106,34 +108,31 @@ class VideoItemDetails extends Component {
             }
             return (
               <VideoTextContainer isDark={isDark}>
-                <h1 className="vd-title">{title}</h1>
+                <p className="vd-title">{title}</p>
                 <div className="vd-second-details-container">
                   <div className="views-date-container">
                     <p className="vd-views">{views} views</p> •
                     <p className="vd-views">{publishedAt} </p>
                   </div>
                   <div className="like-container">
-                    <button
+                    <VideoButton
                       type="button"
-                      className={`like-button ${liked ? 'active' : ''}`}
+                      active={liked}
                       onClick={this.onLikeVideo}
                     >
                       <BiLike className="like-icon" /> Like
-                    </button>
-                    <button
+                    </VideoButton>
+                    <VideoButton
                       type="button"
-                      className={`like-button ${disliked ? 'active' : ''}`}
+                      active={disliked}
                       onClick={this.onDislikeVideo}
                     >
                       <BiDislike className="like-icon" /> Dislike
-                    </button>
-                    <button
-                      type="button"
-                      className={`like-button ${saved ? 'active' : ''}`}
-                      onClick={onSave}
-                    >
-                      <MdPlaylistAdd className="like-icon" /> Save
-                    </button>
+                    </VideoButton>
+                    <VideoButton type="button" active={saved} onClick={onSave}>
+                      <MdPlaylistAdd className="like-icon" />{' '}
+                      {saved ? 'Saved' : 'Save'}
+                    </VideoButton>
                   </div>
                 </div>
                 <hr className="vd-separator-line" />
@@ -159,12 +158,21 @@ class VideoItemDetails extends Component {
     )
   }
 
+  renderLoader = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+    </div>
+  )
+
   render() {
     const {status} = this.state
     let details
     switch (status) {
       case statusConstants.success:
         details = this.renderVideoDetails()
+        break
+      case statusConstants.inProgress:
+        details = this.renderLoader()
         break
 
       default:

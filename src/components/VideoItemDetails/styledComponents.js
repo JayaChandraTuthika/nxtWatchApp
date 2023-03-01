@@ -6,7 +6,19 @@ export const VideoBackgroundContainer = styled.div`
   padding: 0;
   margin: 0;
 `
-
+export const VideoButton = styled.button`
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${props => (props.active ? '#2563eb' : '#64748b')};
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0px 5px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+`
 export const VideoContainer = styled.div`
   width: 100%;
   height: 450px;
