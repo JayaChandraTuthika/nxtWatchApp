@@ -1,0 +1,50 @@
+* {
+  /* border: 1px solid rgb(245, 168, 25); */
+}
+.no-saved-videos-container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.no-saved-videos-image {
+  height: 250px;
+}
+.no-saved-heading {
+  font-size: 30px;
+  margin-top: 20px;
+}
+.saved-list-icon-banner {
+  color: #ff0000;
+  height: 35px;
+  width: 35px;
+}
+.banner-text-saved {
+  font-size: 35px;
+  margin-left: 15px;
+}
+.saved-videos-list-container {
+  list-style-type: none;
+  padding: 0;
+}
+.saved-video-list-item {
+  padding: 0;
+  margin: 5%;
+}
+.link-style-saved-video {
+  text-decoration: none;
+  display: flex;
+}
+.saved-video-image {
+  height: 220px;
+  margin: 0;
+}
+.saved-video-text-container {
+  margin-left: 15px;
+}
+.saved-video-channel-name {
+  color: #64748b;
+  font-size: 17px;
+}

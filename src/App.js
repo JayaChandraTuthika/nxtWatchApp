@@ -6,6 +6,7 @@ import MainContext from './context/MainContext'
 import LoginPage from './components/LoginPage'
 import Home from './components/HomePage'
 import VideoItemDetails from './components/VideoItemDetails'
+import SavedVideos from './components/SavedVideos'
 import ProtectedRoute from './components/ProtectedRoute'
 
 import './App.css'
@@ -52,6 +53,11 @@ class App extends Component {
               exact
               path="/videos/:id"
               component={VideoItemDetails}
+            />
+            <ProtectedRoute
+              exact
+              path="/saved-videos"
+              component={SavedVideos}
             />
           </Switch>
         </MainContext.Provider>

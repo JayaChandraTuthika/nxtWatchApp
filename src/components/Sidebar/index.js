@@ -30,7 +30,7 @@ class Sidebar extends Component {
       this.setState({activeTab: 'TRENDING'})
     } else if (path === '/gaming') {
       this.setState({activeTab: 'GAMING'})
-    } else if (path === 'saved-videos') {
+    } else if (path === '/saved-videos') {
       this.setState({activeTab: 'SAVED_VIDEOS'})
     }
   }
