@@ -1,0 +1,41 @@
+* {
+  /* border: 1px solid blue; */
+  font-family: 'roboto';
+}
+.sidebar-nav-links-container {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+.contact-us-text {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 15px 5px;
+}
+.sidebar-bottom-icons-container {
+  display: flex;
+}
+.sidebar-bottom-icons-container-icon {
+  height: 35px;
+  margin: 0 5px;
+}
+.last-text-sidebar {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 15px 5px;
+}
+.link-text {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+.active-icon {
+  height: 25px;
+  width: 25px;
+  color: #ff0000;
+  margin-right: 15px;
+}
+.inactive-icon {
+  height: 25px;
+  width: 25px;
+}

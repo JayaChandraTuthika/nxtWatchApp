@@ -1,0 +1,32 @@
+* {
+  /* border: 1px solid blue; */
+}
+.nav-logo {
+  height: 45px;
+  margin: 5px;
+}
+.nav-links-container {
+  display: flex;
+  align-items: center;
+}
+
+.theme-btn {
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0 20px;
+  border: none;
+  outline: none;
+}
+.theme-image {
+  margin: 0;
+  height: 45px;
+  margin-top: 5px;
+}
+.profile-icon {
+  height: 45px;
+  margin: 0;
+}

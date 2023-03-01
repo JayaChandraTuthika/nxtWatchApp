@@ -1,0 +1,126 @@
+* {
+  /* border: 1px solid blue; */
+}
+.sidebar-content-section {
+  display: flex;
+  height: 100%;
+  padding: 0;
+}
+.content-section-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* .banner-container {
+  width: 100%;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  padding: 25px 45px;
+  background-size: contain;
+  background-position: cover;
+  background-position: right;
+
+  display: flex;
+  justify-content: space-between;
+} */
+.banner-website-logo {
+  height: 45px;
+}
+.banner-text-container {
+  max-width: 400px;
+}
+.banner-text {
+  color: #64748b;
+  font-size: 17px;
+  font-weight: 500;
+}
+.banner-get-it-button {
+  color: #546070;
+  border: 1px solid #56606d;
+  padding: 10px 20px;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.banner-close-btn {
+  align-self: flex-start;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.banner-close-icon {
+  height: 25px;
+  width: 25px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.search-movies-list-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.search-container {
+  display: flex;
+  padding: 0;
+  margin: 25px 7%;
+  width: 40%;
+}
+.search-input-home {
+  padding: 7px 18px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  border: 1px solid #b1c4df9f;
+  background-color: transparent;
+  flex-grow: 1;
+  border-right: 0;
+}
+.search-btn-home {
+  background-color: #dbeaf04f;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  outline: none;
+  border: 1px solid #b1c4df9c;
+}
+.search-icon-home {
+  height: 20px;
+  width: 20px;
+}
+.home-movies-list-container {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 7%;
+}
+
+/* Failure styles */
+.no-videos-image {
+  height: 300px;
+}
+.no-videos-heading {
+  font-size: 35px;
+}
+.no-videos-para {
+  font-size: 17px;
+  color: #64748b;
+  margin: 0;
+  margin-bottom: 25px;
+}
+.no-videos-retry-btn {
+  background-color: #3b82f6;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  cursor: pointer;
+}

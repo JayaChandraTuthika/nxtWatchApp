@@ -1,0 +1,90 @@
+* {
+  /* border: 1px solid blue; */
+}
+
+.content-section-video-details {
+  margin: 1% 2%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5%;
+}
+.vd-title {
+  font-family: 'roboto';
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.vd-second-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.views-date-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 210px;
+  color: #64748b;
+}
+.vd-views {
+  color: #64748b;
+  font-size: 17px;
+  font-weight: 500;
+
+  margin: 0;
+}
+.like-container {
+  display: flex;
+  align-items: center;
+}
+.like-button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0px 5px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.like-icon {
+  height: 28px;
+  width: 28px;
+
+  margin-right: 7px;
+}
+.active {
+  color: #2563eb;
+}
+.vd-separator-line {
+  border: 1px solid #cbd5e1;
+  margin-top: 20px;
+}
+.vd-channel-container {
+  display: flex;
+}
+.channel-profile-pic {
+  height: 50px;
+  margin-right: 25px;
+}
+.vd-channel-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+.vd-channel-details {
+  color: #64748b;
+  font-size: 15px;
+  margin: 10px 0;
+}
+.vd-description {
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 20px;
+}
