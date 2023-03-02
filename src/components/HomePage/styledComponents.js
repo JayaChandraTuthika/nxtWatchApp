@@ -31,7 +31,7 @@ export const FailureContainer = styled.div`
 `
 
 export const RetryButton = styled.button`
-  background-color: #3b82f6;
+  background-color: #4f46e5;
   color: white;
   font-size: 15px;
   font-weight: 600;

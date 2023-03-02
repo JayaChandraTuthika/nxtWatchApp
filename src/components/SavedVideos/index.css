@@ -48,3 +48,11 @@
   color: #64748b;
   font-size: 17px;
 }
+.content-section--saved-videos {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5%;
+}
