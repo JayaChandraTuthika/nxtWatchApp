@@ -7,6 +7,7 @@ import LoginPage from './components/LoginPage'
 import Home from './components/HomePage'
 import VideoItemDetails from './components/VideoItemDetails'
 import SavedVideos from './components/SavedVideos'
+import TrendingVideos from './components/TrendingVideos'
 import ProtectedRoute from './components/ProtectedRoute'
 
 import './App.css'
@@ -59,6 +60,7 @@ class App extends Component {
               path="/saved-videos"
               component={SavedVideos}
             />
+            <ProtectedRoute exact path="/trending" component={TrendingVideos} />
           </Switch>
         </MainContext.Provider>
       </>

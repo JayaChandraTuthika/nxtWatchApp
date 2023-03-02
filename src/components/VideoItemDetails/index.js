@@ -2,7 +2,7 @@ import {Component} from 'react'
 import ReactPlayer from 'react-player'
 import Loader from 'react-loader-spinner'
 import {BiLike, BiDislike} from 'react-icons/bi'
-import {MdPlaylistAdd, MdPlaylistAddCheck} from 'react-icons/md'
+import {MdPlaylistAdd} from 'react-icons/md'
 import Cookies from 'js-cookie'
 
 import Header from '../Header'
@@ -31,7 +31,6 @@ class VideoItemDetails extends Component {
     videoDetails: {},
     liked: false,
     disliked: false,
-    saved: false,
   }
 
   componentDidMount() {
@@ -82,12 +81,12 @@ class VideoItemDetails extends Component {
   }
 
   renderVideoDetails = () => {
-    const {videoDetails, liked, disliked, saved} = this.state
+    const {videoDetails, liked, disliked} = this.state
     const {
+      id,
       videoUrl,
       title,
       channel,
-      thumbnailUrl,
       description,
       publishedAt,
       views,
@@ -100,11 +99,17 @@ class VideoItemDetails extends Component {
         </VideoContainer>
         <MainContext.Consumer>
           {value => {
-            const {isDark, onSaveVideo} = value
+            const {isDark, onSaveVideo, savedVideos} = value
             const onSave = () => {
-              this.setState(prev => ({saved: !prev.saved}))
               const video = {...videoDetails}
               onSaveVideo(video)
+            }
+            const vid = savedVideos.find(each => each.id === id)
+            let saved
+            if (vid === undefined) {
+              saved = false
+            } else {
+              saved = true
             }
             return (
               <VideoTextContainer isDark={isDark}>
