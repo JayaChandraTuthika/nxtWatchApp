@@ -18,4 +18,13 @@ export const LogoutButton = styled.button`
   font-weight: 600;
   text-align: center;
   margin: 0 15px;
+  cursor: pointer;
+`
+export const ModalContainer = styled.div`
+  background-color: ${props => (props.isDark ? '#212121' : 'white')};
+  padding: 40px;
+  width: 390px;
+  text-align: center;
+  border-radius: 10px;
+  color: ${props => (props.isDark ? '#cbd5e1' : '#1e293b')};
 `
