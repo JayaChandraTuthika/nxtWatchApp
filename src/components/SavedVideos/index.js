@@ -80,7 +80,7 @@ const SavedVideos = () => (
           <Header />
           <div className="sidebar-content-section">
             <Sidebar />
-            <div className="content-section--saved-videos">{pageContent}</div>
+            <div className="content-section-saved-videos">{pageContent}</div>
           </div>
         </SavedBackgroundContainer>
       )

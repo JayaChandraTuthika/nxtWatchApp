@@ -46,3 +46,10 @@ export const RetryButtonTrending = styled.button`
   border-radius: 7px;
   cursor: pointer;
 `
+export const FailureHeading = styled.h1`
+  color: ${props => (props.isDark ? 'white' : '#1e293b')};
+  font-size: 20px;
+  margin: 7px 0;
+  margin-bottom: 10px;
+  font-weight: 500;
+`

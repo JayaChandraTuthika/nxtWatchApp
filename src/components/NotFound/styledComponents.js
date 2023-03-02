@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SavedBackgroundContainer = styled.div`
+export const NotFoundBackgroundContainer = styled.div`
   background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 
   min-height: 100vh;

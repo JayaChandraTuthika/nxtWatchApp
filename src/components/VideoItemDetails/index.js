@@ -15,6 +15,9 @@ import {
   VideoContainer,
   VideoTextContainer,
   VideoButton,
+  RetryButtonTrending,
+  NoSavedVideosPara,
+  FailureHeading,
 } from './styledComponents'
 import './index.css'
 
@@ -80,6 +83,10 @@ class VideoItemDetails extends Component {
     this.setState(prev => ({disliked: !prev.disliked, liked: false}))
   }
 
+  onRetry = () => {
+    this.getVideoDetails()
+  }
+
   renderVideoDetails = () => {
     const {videoDetails, liked, disliked} = this.state
     const {
@@ -91,7 +98,7 @@ class VideoItemDetails extends Component {
       publishedAt,
       views,
     } = videoDetails
-    console.log(channel)
+    // console.log(channel)
     return (
       <>
         <VideoContainer>
@@ -163,6 +170,41 @@ class VideoItemDetails extends Component {
     )
   }
 
+  renderFailureView = () => (
+    <MainContext.Consumer>
+      {value => {
+        const {isDark} = value
+        return (
+          <div className="no-saved-videos-container">
+            <img
+              src={
+                isDark
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+              }
+              alt="failure view"
+              className="no-saved-videos-image"
+            />
+            <FailureHeading isDark={isDark} className="no-saved-heading">
+              Oops! Something Went Wrong
+            </FailureHeading>
+            <NoSavedVideosPara isDark={isDark}>
+              We are having some trouble to complete your request. PLease try
+              again
+            </NoSavedVideosPara>
+            <RetryButtonTrending
+              type="button"
+              onClick={this.onRetry}
+              className="no-videos-retry-btn"
+            >
+              Retry
+            </RetryButtonTrending>
+          </div>
+        )
+      }}
+    </MainContext.Consumer>
+  )
+
   renderLoader = () => (
     <div className="loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
@@ -175,6 +217,9 @@ class VideoItemDetails extends Component {
     switch (status) {
       case statusConstants.success:
         details = this.renderVideoDetails()
+        break
+      case statusConstants.failure:
+        details = this.renderFailureView()
         break
       case statusConstants.inProgress:
         details = this.renderLoader()

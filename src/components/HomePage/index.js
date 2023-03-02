@@ -76,6 +76,8 @@ class Home extends Component {
         homeStatus: statusConstants.success,
         homeMoviesList: updatedData,
       })
+    } else {
+      this.setState({homeStatus: statusConstants.failure})
     }
   }
 
@@ -116,9 +118,13 @@ class Home extends Component {
         return (
           <FailureContainer isDark={isDark}>
             <img
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
-              alt="no videos"
-              className="no-videos-image"
+              src={
+                isDark
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+              }
+              alt="failure view"
+              className="no-saved-videos-image"
             />
             <h1 className="no-videos-heading">Oops! Something Went Wrong</h1>
             <p className="no-videos-para">
@@ -184,14 +190,15 @@ class Home extends Component {
     </div>
   )
 
-  renderFailure = () => {}
-
   render() {
     const {showBanner, homeStatus, searchInput} = this.state
     let home
     switch (homeStatus) {
       case statusConstants.success:
         home = this.renderHomeMovies()
+        break
+      case statusConstants.failure:
+        home = this.renderFailureHome()
         break
       case statusConstants.inProgress:
         home = this.renderLoader()

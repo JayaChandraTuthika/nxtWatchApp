@@ -1,9 +1,10 @@
 import {withRouter, Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import Popup from 'reactjs-popup'
 
 import MainContext from '../../context/MainContext'
 
-import {Navbar, LogoutButton} from './styledComponents'
+import {Navbar, LogoutButton, ModalContainer} from './styledComponents'
 import './index.css'
 
 const Header = props => (
@@ -59,9 +60,36 @@ const Header = props => (
                 className="profile-icon"
               />
             </button>
-            <LogoutButton isDark={isDark} onClick={onLogout}>
-              Logout
-            </LogoutButton>
+
+            <Popup
+              modal
+              trigger={<LogoutButton isDark={isDark}>Logout</LogoutButton>}
+              className="popup-content"
+            >
+              {close => (
+                <>
+                  <ModalContainer isDark={isDark} className="modal-container">
+                    <p className="popup-text">
+                      Are you sure, you want to logout
+                    </p>
+                    <button
+                      type="button"
+                      className="cancel-trigger-button"
+                      onClick={() => close()}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      className="logout-confirm-btn"
+                      onClick={onLogout}
+                    >
+                      Confirm
+                    </button>
+                  </ModalContainer>
+                </>
+              )}
+            </Popup>
           </div>
         </Navbar>
       )

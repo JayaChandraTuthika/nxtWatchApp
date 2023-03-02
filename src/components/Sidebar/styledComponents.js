@@ -2,10 +2,12 @@ import styled from 'styled-components'
 
 export const SidebarContainer = styled.div`
   background-color: ${props => (props.isDark ? '#212121' : 'transparent')};
-  min-height: 92vh;
-  min-width: 300px;
+  height: 100vh;
+  max-width: 23%;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 0;
 `
 export const SidebarBottomContainer = styled.div`

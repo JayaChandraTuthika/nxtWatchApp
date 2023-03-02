@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {HiFire} from 'react-icons/hi'
+import {SiYoutubegaming} from 'react-icons/si'
 import Loader from 'react-loader-spinner'
 import {Link} from 'react-router-dom'
 
@@ -10,13 +10,12 @@ import Sidebar from '../Sidebar'
 import MainContext from '../../context/MainContext'
 
 import {
-  TrendingBackgroundContainer,
+  GamingBackgroundContainer,
   NoSavedVideosPara,
   SavedBannerContainer,
   BannerLogoContainer,
   TitleTextVideo,
   RetryButtonTrending,
-  FailureHeading,
 } from './styledComponents'
 
 import './index.css'
@@ -28,20 +27,20 @@ const statusConstants = {
   failure: 'FAILURE',
 }
 
-class TrendingVideos extends Component {
+class GamingVideos extends Component {
   state = {
     status: statusConstants.initial,
-    trendingVideos: [],
+    gamingVideos: [],
   }
 
   componentDidMount() {
-    this.getTrendingVideos()
+    this.getGamingVideos()
   }
 
-  getTrendingVideos = async () => {
+  getGamingVideos = async () => {
     this.setState({status: statusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
-    const trendingApiUrl = 'https://apis.ccbp.in/videos/trending'
+    const trendingApiUrl = 'https://apis.ccbp.in/videos/gaming'
     const options = {
       method: 'GET',
       headers: {
@@ -51,25 +50,26 @@ class TrendingVideos extends Component {
     const response = await fetch(trendingApiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
+      console.log(data)
       const updatedData = data.videos.map(each => ({
         id: each.id,
-        channel: each.channel,
-        publishedAt: each.published_at,
+
         thumbnailUrl: each.thumbnail_url,
         title: each.title,
         viewCount: each.view_count,
       }))
+
       this.setState({
         status: statusConstants.success,
-        trendingVideos: updatedData,
+        gamingVideos: updatedData,
       })
     } else {
       this.setState({status: statusConstants.failure})
     }
   }
 
-  renderTrendingVideos = () => {
-    const {trendingVideos} = this.state
+  renderGamingVideos = () => {
+    const {gamingVideos} = this.state
     return (
       <MainContext.Consumer>
         {value => {
@@ -78,34 +78,28 @@ class TrendingVideos extends Component {
             <>
               <SavedBannerContainer isDark={isDark}>
                 <BannerLogoContainer isDark={isDark}>
-                  <HiFire className="saved-list-icon-banner" />
+                  <SiYoutubegaming className="saved-list-icon-banner" />
                 </BannerLogoContainer>
-                <h1 className="banner-text-saved">Trending</h1>
+                <h1 className="banner-text-saved">Gaming</h1>
               </SavedBannerContainer>
-              <ul className="saved-videos-list-container">
-                {trendingVideos.map(each => (
-                  <li className="saved-video-list-item" key={each.id}>
+              <ul className="gaming-videos-list-container">
+                {gamingVideos.map(each => (
+                  <li className="gaming-video-list-item" key={each.id}>
                     <Link
                       to={`/videos/${each.id}`}
-                      className="link-style-saved-video"
+                      className="link-style-gaming"
                     >
                       <img
                         src={each.thumbnailUrl}
                         alt="video thumbnail"
-                        className="saved-video-image"
+                        className="gaming-video-item-image"
                       />
-                      <div className="saved-video-text-container">
-                        <TitleTextVideo isDark={isDark}>
-                          {each.title}
-                        </TitleTextVideo>
-                        <p className="saved-video-channel-name">
-                          {each.channel.name}
-                        </p>
-                        <div className="views-date-container">
-                          <p className="vd-views">{each.viewCount} views</p> •
-                          <p className="vd-views">{each.publishedAt} </p>
-                        </div>
-                      </div>
+                      <TitleTextVideo isDark={isDark}>
+                        {each.title}
+                      </TitleTextVideo>
+                      <p className="game-video-card-para">
+                        {each.viewCount} Watching Worldwide
+                      </p>
                     </Link>
                   </li>
                 ))}
@@ -117,11 +111,11 @@ class TrendingVideos extends Component {
     )
   }
 
-  onRetryTrending = () => {
-    this.getTrendingVideos()
+  onRetryGaming = () => {
+    this.getGamingVideos()
   }
 
-  renderTrendingFailure = () => (
+  renderGamingFailure = () => (
     <MainContext.Consumer>
       {value => {
         const {isDark} = value
@@ -136,16 +130,14 @@ class TrendingVideos extends Component {
               alt="failure view"
               className="no-saved-videos-image"
             />
-            <FailureHeading className="no-saved-heading">
-              Oops! Something Went Wrong
-            </FailureHeading>
+            <h1 className="no-saved-heading">Oops! Something Went Wrong</h1>
             <NoSavedVideosPara>
               We are having some trouble to complete your request. PLease try
               again
             </NoSavedVideosPara>
             <RetryButtonTrending
               type="button"
-              onClick={this.onRetryTrending}
+              onClick={this.onRetryGaming}
               className="no-videos-retry-btn"
             >
               Retry
@@ -167,10 +159,10 @@ class TrendingVideos extends Component {
     let pageContent
     switch (status) {
       case statusConstants.success:
-        pageContent = this.renderTrendingVideos()
+        pageContent = this.renderGamingVideos()
         break
       case statusConstants.failure:
-        pageContent = this.renderTrendingFailure()
+        pageContent = this.renderGamingFailure()
         break
       case statusConstants.inProgress:
         pageContent = this.renderLoader()
@@ -186,7 +178,7 @@ class TrendingVideos extends Component {
           const {isDark} = value
 
           return (
-            <TrendingBackgroundContainer isDark={isDark} data-testid="trending">
+            <GamingBackgroundContainer isDark={isDark} data-testid="gaming">
               <Header />
               <div className="sidebar-content-section">
                 <Sidebar />
@@ -194,7 +186,7 @@ class TrendingVideos extends Component {
                   {pageContent}
                 </div>
               </div>
-            </TrendingBackgroundContainer>
+            </GamingBackgroundContainer>
           )
         }}
       </MainContext.Consumer>
@@ -202,4 +194,4 @@ class TrendingVideos extends Component {
   }
 }
 
-export default TrendingVideos
+export default GamingVideos
